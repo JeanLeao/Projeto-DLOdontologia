@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Consulta </h1>
+    <hr>
+    <h4>Nome: <span id="name"></span></h4>
+    <h4>CPF: <span id="cpf"></span></h4>
+    <h4>Email: <span id="email"></span></h4>
+    <h4>numero: <span id="number"></span></h4>
+    <h4>Estado: <span id="state"></span></h4>
+    <hr>
+
+    <button id="button" onclick="finallyConsult()">Finalizar Consulta</button>
+    <hr>
+
+    <h1>Descrição de Consulta</h1>
+    <p id="description"></p>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+        var log = localStorage.getItem('teste');
+        axios.get('http://localhost:8080/event/'+log).then((res) => {
+
+                var name = document.getElementById('name');
+                var email = document.getElementById('email');
+                var number = document.getElementById('number');
+                var state = document.getElementById('state');
+                var btn = document.getElementById('button');
+                var description = document.getElementById('description');
+                var cpf = document.getElementById('cpf');
+
+                console.log(res.data)
+
+                name.innerHTML = res.data.name;
+                email.innerHTML = res.data.email;
+                number.innerHTML = res.data.number;
+                description.innerHTML = res.data.description;
+                cpf.innerHTML = res.data.cpf;
+            
+
+                if(res.data.finished == true){
+                    state.innerHTML = 'Fechada';
+                    btn.style.display = 'none';
+                    
+                }else{
+                    state.innerHTML = 'Em Aberto';
+                    btn.style.display = 'visible';
+                }
+            console.log(res)
+        })
+
+        function finallyConsult(){
+            axios.get('http://localhost:8080/finish/'+log).then((res) => {
+                window.location.href = './index.html'
+            })
+    }
+
+</script>
+</html>

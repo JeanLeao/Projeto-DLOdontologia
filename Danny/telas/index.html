@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./js/main.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js"></script>
+    <title>Consulta</title>
+</head>
+<body>
+    <div class="center">
+        <div class="corpo">
+            <div id="calendar"></div>
+        </div>
+        <hr>
+        <div class="rigth">
+            <h1>DannyLais</h1>
+            <h3>Cadastrar Consulta</h3>
+            <a href="./cadastro.html">Teste</a>
+            <h3>Buscar Consulta</h3>
+            <input type="text" id="cpf" placeholder="CPF: 000.000.000-00" class="cpf">
+            <button onclick="Person()">Buscar</button>
+            <span id="404" style="display: none;">Cpf Não Encontrado</span>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../conected/newaxios.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="./js/jquery.mask.min.js"></script>
+<script src="./js/index.js"></script>
+<script>
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+</script>
+</html>

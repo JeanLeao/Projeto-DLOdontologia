@@ -1,0 +1,26 @@
+.corpo{
+    width: 85%;
+    height: 100%;
+    background-color: rgba(145, 108, 36, 0.897);
+    border-radius: 10px;
+}
+
+body{
+    background-color: honeydew;
+}
+.center{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.rigth{
+    text-align: center;
+    margin: auto;
+}
+
+hr{
+    margin: 0;
+    margin-left: 1%;
+}

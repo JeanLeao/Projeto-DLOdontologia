@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro de Consulta</h1>
+    <hr>
+        <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" class="form-control cpf"> 
+        <input type="text" name="name" id="name" placeholder="Nome" class="form-control">
+        <input type="email" name="email" id="email" placeholder="Email@email.com" class="form-control">
+        <input type="text" name="number" id="number" placeholder="NUMERO" class="form-control number">
+        <input type="text" name="description" id="description" placeholder="Description" class="form-control">
+        <input type="date" name="date" id="date" class="form-control">
+        <input type="time" name="time" id="time" class="form-control">
+        <button onclick="GetByCpf()" class="btn btn-success btn-block">Buscar CPF</button>
+        <button onclick="createdConsulta()" class="btn btn-success btn-block">Agendar</button>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="./js/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../conected/newaxios.js"></script>
+<script>
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+    $('.number').mask('0000000000', {reverse: true});
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/collection.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Consultas Localizadas</h1>
+    <br>
+    <div id="corpo">
+
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+
+var cpf = localStorage.getItem('cpf');
+axios.get('http://localhost:8080/consult/person/'+cpf).then((res) => {
+    res.data.forEach(consulta => {
+        console.log(consulta)
+        var corpo = document.getElementById("corpo");
+        var newDiv = document.createElement("div");
+        
+        var p = document.createElement("p");
+        // ARRUMANDO A DATA PARA O VIEW
+        var date = consulta.date;
+        var date1level = date.split("T");
+        //dentro da div NEWDIV
+        p.innerHTML = 
+
+        `Nome: ${consulta.name}
+        <br>CPF: ${consulta.cpf}
+        <br>DATA: ${date1level[0]}
+        <br>
+        <button id="${consulta._id}" type="submit" onclick="Teste(this.id)">Entrar</button>`
+
+        
+        newDiv.appendChild(p)
+        if (consulta.finished == true){
+            newDiv.style.backgroundColor = 'red'
+        }else{
+            newDiv.style.backgroundColor = 'green'
+        }
+        corpo.appendChild(newDiv)
+    });
+
+})
+
+
+function Teste(id){
+    axios.get('http://localhost:8080/event/'+id).then((res) => {
+            console.log(res)
+            ValueEventClient = res;
+            window.location.href = './eventclick.html'
+            localStorage.setItem("teste", res.data._id);
+        })
+}
+
+
+</script>
+</html>

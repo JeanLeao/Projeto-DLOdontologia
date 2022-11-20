@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>ESCANEIE O QR CODE</h1>
+    <canvas id="qrcode"></canvas>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+
+
+var socket = io('http://localhost:8080');
+socket.emit("iniciar", "iniciando");
+    socket.on("qrload", (data) => {  // RECEBENDO UM EVENTO DO BACK
+        console.log(data)
+        var qrcode = new QRious({
+  element: document.getElementById("qrcode"),
+  background: '#ffffff',
+  backgroundAlpha: 1,
+  foreground: '#000000',
+  foregroundAlpha: 1,
+  level: 'H',
+  padding: 0,
+  size: 384,
+  value: data
+});
+    });  
+
+socket.on("pronto", (data) => {  // RECEBENDO UM EVENTO DO BACK
+    window.location.href = './index.html'
+});
+</script>
+
+
+</html>
